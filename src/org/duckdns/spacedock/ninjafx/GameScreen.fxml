@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ToolBar?>
+
+<BorderPane fx:controller="org.duckdns.spacedock.ninjafx.GameController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+	<VBox>
+	    <children>
+		<ToolBar>
+		    <items>
+			<Button mnemonicParsing="false" text="Back"/>
+			<Button mnemonicParsing="false" text="Son"/>
+		    </items>
+		</ToolBar>
+		<ToolBar>
+		    <items>
+			<Button mnemonicParsing="false" text="left"/>
+			<Text text="Caractéristiques"/>
+			<Button mnemonicParsing="false" text="right"/>
+		    </items>
+		</ToolBar>
+	    </children>
+	</VBox>
+    </top>
+    <center>
+	<AnchorPane BorderPane.alignment="CENTER">
+	    <children>
+		<GridPane nodeOrientation="LEFT_TO_RIGHT" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+		    <children>
+
+			<Button mnemonicParsing="false" text="Punch" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+			<Button mnemonicParsing="false" text="Kick" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+			<Button mnemonicParsing="false" text="Throw" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+			<Button mnemonicParsing="false" text="Fate" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+			<Text text="Endurance" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+			<Text text="Inner Force" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+
+			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+
+			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+			<Button mnemonicParsing="false" text="-" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+			<Button mnemonicParsing="false" text="-" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+
+			<CheckBox mnemonicParsing="false" text="use inner force" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+			<CheckBox mnemonicParsing="false" text="use inner force" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+
+			<Text text="Enemy punch defense" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+			<Text text="Enemy kick defense" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+			<Text text="Enemy throw defense" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+
+			<Text text="Enemy endurance" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
+
+			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+
+			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+		    </children>
+		</GridPane>
+
+		<VBox AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+		    <children>
+			<CheckBox mnemonicParsing="false" text="Shurikenjutsu"/>
+			<HBox>
+			    <children>
+				<Text text="Shurikens left"/>
+				<Text text="0"/>
+				<Button mnemonicParsing="false" text="+"/>
+				<Button mnemonicParsing="false" text="-"/>
+			    </children>
+			</HBox>
+			<CheckBox mnemonicParsing="false" text="Arrow cutting"/>
+			<CheckBox mnemonicParsing="false" text="Acrobatics"/>
+			<CheckBox mnemonicParsing="false" text="Immunity to poison"/>
+			<CheckBox mnemonicParsing="false" text="Feign death"/>
+			<CheckBox mnemonicParsing="false" text="Escapology"/>
+			<CheckBox mnemonicParsing="false" text="Poison needles"/>
+			<CheckBox mnemonicParsing="false" text="Locks and traps"/>
+			<CheckBox mnemonicParsing="false" text="Climbing"/>
+		    </children>
+		</VBox>
+	    </children>
+	</AnchorPane>
+    </center>
+
+    <bottom>
+	<HBox BorderPane.alignment="CENTER">
+	    <children>
+		<TextArea text="fsfsf" />
+		<Button mnemonicParsing="false" text="Button" />
+		<Button mnemonicParsing="false" text="Button" />
+	    </children>
+	</HBox>
+    </bottom>
+
+</BorderPane>
