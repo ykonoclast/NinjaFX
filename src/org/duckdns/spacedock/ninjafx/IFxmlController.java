@@ -12,5 +12,5 @@ package org.duckdns.spacedock.ninjafx;
 public interface IFxmlController
 {
 
-    public void setApp(INinjAppCallback p_MainApp);
+    public void setMainAppCallback(IMainAppCallback p_MainAppCallBack);
 }

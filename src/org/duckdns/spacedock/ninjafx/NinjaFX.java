@@ -6,20 +6,24 @@
 package org.duckdns.spacedock.ninjafx;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  *
  * @author ykonoclast
  */
-public class NinjaFX extends Application implements INinjAppCallback
+public class NinjaFX extends Application implements IMainAppCallback
 {
 
     private Stage m_mainStage;
+
+    private IFxmlController m_currentController;
 
     @Override
     public void start(Stage stage) throws IOException
@@ -27,19 +31,16 @@ public class NinjaFX extends Application implements INinjAppCallback
 	m_mainStage = stage;
 	m_mainStage.setTitle("NinjaFX");//TODO Strings i18n
 
-	displayMenu();
+	displayScene("MainMenu.fxml");
 	m_mainStage.show();
 	m_mainStage.setFullScreen(true);
 
     }
 
-    private void displayScene(String p_xmlFile) throws IOException
+    @Override
+    public void displayScene(String p_xmlFileName) throws IOException
     {
-	FXMLLoader loader = new FXMLLoader(getClass().getResource(p_xmlFile));//TODO voir si on peut pas éviter ce getclass
-	Parent root = loader.load();
-
-	IFxmlController controller = (IFxmlController) loader.getController();
-	controller.setApp(this);
+	Parent root = getParentFromFxml(p_xmlFileName);
 
 	//scene.getStylesheets().add(Form.class.getResource("Form.css").toExternalForm());//incantation pour le css TODO pourquoi le class.getressource?
 	Scene currentScene = m_mainStage.getScene();
@@ -54,6 +55,7 @@ public class NinjaFX extends Application implements INinjAppCallback
 	}
     }
 
+    /*
     @Override
     public void displayMenu() throws IOException
     {
@@ -65,12 +67,24 @@ public class NinjaFX extends Application implements INinjAppCallback
     {
 	displayScene("GameScreen.fxml");
     }
-
+     */
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
 	launch(args);
+    }
+
+    @Override
+    public Parent getParentFromFxml(String p_fxmlFileName) throws IOException
+    {
+	FXMLLoader loader = new FXMLLoader(getClass().getResource(p_fxmlFileName));//TODO voir si on peut pas éviter ce getclass
+	Parent result = loader.load();
+
+	m_currentController = (IFxmlController) loader.getController();
+	m_currentController.setMainAppCallback(this);
+
+	return result;
     }
 }

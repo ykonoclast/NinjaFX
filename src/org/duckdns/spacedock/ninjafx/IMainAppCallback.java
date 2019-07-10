@@ -6,15 +6,16 @@
 package org.duckdns.spacedock.ninjafx;
 
 import java.io.IOException;
+import javafx.scene.Parent;
 
 /**
  *
  * @author ykonoclast
  */
-public interface INinjAppCallback
+public interface IMainAppCallback
 {
 
-    public void displayMenu() throws IOException;
+    public void displayScene(String p_fxmlFileName) throws IOException;
 
-    public void displayGameScreen() throws IOException;
+    public Parent getParentFromFxml(String p_fxmlFileName) throws IOException;
 }

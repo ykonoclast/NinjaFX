@@ -22,7 +22,7 @@ import javafx.fxml.Initializable;
 public class MainMenuController implements Initializable, IFxmlController
 {
 
-    private INinjAppCallback m_mainApp;
+    private IMainAppCallback m_mainApp;
 
     /**
      * appelé automatiquement par le framework, attention la Scene n'est pas
@@ -39,7 +39,7 @@ public class MainMenuController implements Initializable, IFxmlController
     }
 
     @Override
-    public void setApp(INinjAppCallback p_App)
+    public void setMainAppCallback(IMainAppCallback p_App)
     {
 	m_mainApp = p_App;
     }
@@ -47,6 +47,6 @@ public class MainMenuController implements Initializable, IFxmlController
     @FXML
     protected void newGame(ActionEvent event) throws IOException
     {
-	m_mainApp.displayGameScreen();
+	m_mainApp.displayScene("GameScreen.fxml");
     }
 }

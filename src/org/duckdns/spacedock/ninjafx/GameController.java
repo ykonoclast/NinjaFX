@@ -16,7 +16,7 @@ import javafx.fxml.Initializable;
 public class GameController implements Initializable, IFxmlController
 {
 
-    private INinjAppCallback m_mainApp;
+    private IMainAppCallback m_mainApp;
 
     /**
      * appelé automatiquement par le framework, attention la Scene n'est pas
@@ -33,7 +33,7 @@ public class GameController implements Initializable, IFxmlController
     }
 
     @Override
-    public void setApp(INinjAppCallback p_App)
+    public void setMainAppCallback(IMainAppCallback p_App)
     {
 	m_mainApp = p_App;
     }
