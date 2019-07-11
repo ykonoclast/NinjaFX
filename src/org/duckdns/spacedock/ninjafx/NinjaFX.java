@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * @author ykonoclast
  */
 public class NinjaFX extends Application implements IMainAppCallback
-{
+{//NOTE : on n'utilise pas de subscene car l'on n'a pas besoin de séparer les éléments propres à la scène comme la caméra ou les antialiasing
 
     private Stage m_mainStage;
 

@@ -9,10 +9,12 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import static org.duckdns.spacedock.ninjafx.GameController.AppTab.CARAC;
 import static org.duckdns.spacedock.ninjafx.GameController.AppTab.NOTES;
 import static org.duckdns.spacedock.ninjafx.GameController.AppTab.STUFF;
@@ -25,7 +27,8 @@ public class GameController implements IFxmlController
 {
 
     private IMainAppCallback m_mainApp;
-    private AppTab m_currentTab = CARAC;
+    private AppTab m_currentTab = CARAC;//TODO binder ça au texte du label en haut dans la barre et implémenter le tostring
+    //TODO binder aussi ça à l'affichage ou non des boutons gauche ou droite
 
     @FXML
     private BorderPane fx_borderPane;
@@ -36,7 +39,18 @@ public class GameController implements IFxmlController
     @FXML
     private HBox fx_consolePane;
 
+    @FXML
+    private ToolBar fx_navBar;
+
+    @FXML
+    private Button fx_btnGoLeft;
+
+    @FXML
+    private Button fx_btnGoRight;
+
     private AnchorPane leftPane;
+
+    private VBox rightPane;
 
     /**
      * appelé automatiquement par le framework, attention la Scene n'est pas
@@ -50,19 +64,18 @@ public class GameController implements IFxmlController
     @FXML
     public void initialize()
     {
-
 	try
 	{
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("StuffPane.fxml"));//TODO voir si on peut pas éviter ce getclass
-	    leftPane = loader.load();//TODO mutualiser ces lignes : passer en paramétre this pour affecter le callback
-
+	    leftPane = loader.load();//TODO voir pour mutualiser ces lignes avec l'appli principale
+	    loader = new FXMLLoader(getClass().getResource("NotesPane.fxml"));//TODO voir si on peut pas éviter ce getclass
+	    rightPane = loader.load();//TODO voir pour mutualiser ces lignes avec l'appli principale
 	}
 	catch (IOException e)
 	{
 	    //TODO traiter l'exception
 	    System.err.println(e.getMessage());
 	}
-
     }
 
     @Override
@@ -72,59 +85,45 @@ public class GameController implements IFxmlController
     }
 
     @FXML
-    protected void goLeft(ActionEvent event)
+    private void goLeft(ActionEvent event)
     {
-	if (canGoLeft())
+	switch (m_currentTab)
 	{
-	    //TODO : étoffer pour autre pan
-	    //on retire les éléments qui sont déjà là
-	    fx_borderPane.setCenter(null);
-	    fx_borderPane.setBottom(null);
-	    fx_borderPane.setCenter(leftPane);
-	    m_currentTab = STUFF;
+	    case CARAC:
+		fx_borderPane.setCenter(null);
+		fx_borderPane.setBottom(null);
+		fx_borderPane.setCenter(leftPane);
+		m_currentTab = STUFF;
+		break;
+	    case NOTES:
+		fx_borderPane.setBottom(fx_consolePane);
+		fx_borderPane.setCenter(fx_anchorPane);
+		m_currentTab = CARAC;
+		break;
 	}
     }
 
     @FXML
-    protected void goRight(ActionEvent event)
+    private void goRight(ActionEvent event)
     {
-	if (canGoRight())
+	switch (m_currentTab)
 	{
-	    //TODO : étoffer pour autre pan
-	    //on retire les éléments qui sont déjà là
-	    fx_borderPane.setCenter(null);
-	    fx_borderPane.setBottom(fx_consolePane);
-	    fx_borderPane.setCenter(fx_anchorPane);
-	    m_currentTab = CARAC;
+	    case CARAC:
+		fx_borderPane.setCenter(rightPane);
+		fx_borderPane.setBottom(null);
+		m_currentTab = NOTES;
+
+		break;
+	    case STUFF:
+		fx_borderPane.setBottom(fx_consolePane);
+		fx_borderPane.setCenter(fx_anchorPane);
+		m_currentTab = CARAC;
+		break;
 	}
-    }
-
-    private boolean canGoLeft()//transformer ça en propriétés bindable à l'affichage ou non de la flèche idoine
-    {
-	return (m_currentTab == CARAC || m_currentTab == NOTES);
-    }
-
-    private boolean canGoRight()//transformer ça en propriétés bindable à l'affichage ou non de la flèche idoine
-    {
-	return (m_currentTab == CARAC || m_currentTab == STUFF);
     }
 
     public enum AppTab
     {
 	STUFF, CARAC, NOTES
-	/*{
-	    @Override
-	    public Player next()
-	    {
-		return values()[0]; // retour à TALON dans le cas du dernier élément
-	    }
-
-	};
-
-	public Player next()
-	{
-	    // pas besoin de checker si on est au dernier, l'override ci-dessus gère cela
-	    return values()[ordinal() + 1];
-	}*/
     }
 }

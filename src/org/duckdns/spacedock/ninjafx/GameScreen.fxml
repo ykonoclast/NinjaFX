@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Label?>
 
 <BorderPane fx:controller="org.duckdns.spacedock.ninjafx.GameController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:id="fx_borderPane">
     <top>
@@ -21,11 +22,11 @@
 			<Button mnemonicParsing="false" text="Son"/>
 		    </items>
 		</ToolBar>
-		<ToolBar>
+		<ToolBar fx:id="fx_navBar">
 		    <items>
-			<Button mnemonicParsing="false" text="left" onAction="#goLeft"/>
-			<Text text="Caractéristiques"/>
-			<Button mnemonicParsing="false" text="right" onAction="#goRight"/>
+			<Button mnemonicParsing="false" text="left" fx:id="fx_btnGoLeft" onAction="#goLeft"/>
+			<Label text="Caractéristiques"/>
+			<Button mnemonicParsing="false" text="right" fx:id="fx_btnGoRight" onAction="#goRight"/>
 		    </items>
 		</ToolBar>
 	    </children>
@@ -40,15 +41,15 @@
 			<Button mnemonicParsing="false" text="Kick" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 			<Button mnemonicParsing="false" text="Throw" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 			<Button mnemonicParsing="false" text="Fate" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-			<Text text="Endurance" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-			<Text text="Inner Force" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+			<Label text="Endurance" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+			<Label text="Inner Force" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
 
-			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-			<Text text="0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
 			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
 			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
@@ -67,11 +68,11 @@
 			<CheckBox mnemonicParsing="false" text="use inner force" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
 			<CheckBox mnemonicParsing="false" text="use inner force" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
 
-			<Text text="Enemy punch defense" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
-			<Text text="Enemy kick defense" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
-			<Text text="Enemy throw defense" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+			<Label text="Enemy punch defense" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+			<Label text="Enemy kick defense" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+			<Label text="Enemy throw defense" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
 
-			<Text text="Enemy endurance" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
+			<Label text="Enemy endurance" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
 
 			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
 			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
@@ -86,8 +87,8 @@
 			<CheckBox mnemonicParsing="false" text="Shurikenjutsu"/>
 			<HBox>
 			    <children>
-				<Text text="Shurikens left"/>
-				<Text text="0"/>
+				<Label text="Shurikens left"/>
+				<Label text="0"/>
 				<Button mnemonicParsing="false" text="+"/>
 				<Button mnemonicParsing="false" text="-"/>
 			    </children>

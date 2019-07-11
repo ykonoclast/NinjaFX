@@ -5,7 +5,6 @@
  */
 package org.duckdns.spacedock.ninjafx;
 
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +21,7 @@ import javafx.scene.layout.VBox;
  *
  * @author ykonoclast
  */
-public class StuffController
+public class NotesController
 {//TODO nettoyer, virer trucs non-utilisés, renommer etc.
 
     @FXML

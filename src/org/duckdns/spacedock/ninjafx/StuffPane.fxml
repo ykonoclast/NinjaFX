@@ -6,24 +6,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:controller="org.duckdns.spacedock.ninjafx.StuffController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="org.duckdns.spacedock.ninjafx.StuffController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-	<VBox fx:id="VBoxMain" alignment="TOP_CENTER" AnchorPane.topAnchor="5" AnchorPane.leftAnchor="5">
+	<VBox fx:id="fx_VBoxMain" alignment="TOP_CENTER" AnchorPane.topAnchor="5" AnchorPane.leftAnchor="5">
 	    <children>
-		<Label fx:id="TitleLbl" alignment="TOP_LEFT" text="ListView Example">
+		<Label fx:id="fx_TitleLbl" alignment="TOP_LEFT" text="Special Items">
 		    <font>
 			<Font name="System Bold" size="18.0" />
 		    </font>
 		</Label>
-		<ListView fx:id="listBoxMain"/>
-		<Label id="TextLbl" fx:id="LblAddText" text="Enter Text" />
-		<TextField fx:id="txtAddItem"/>
-		<HBox id="HBox" fx:id="HBox4Btns" alignment="CENTER" spacing="5.0">
+		<ListView fx:id="fx_listBoxMain"/>
+		<TextField fx:id="fx_txtAddItem"/>
+		<HBox fx:id="fx_HBox4Btns" alignment="CENTER" spacing="5.0">
 		    <children>
-			<Button fx:id="BtnAdd" mnemonicParsing="false" onAction="#addAction" text="Add" />
-			<Button fx:id="BtnDelete" mnemonicParsing="false" onAction="#deleteAction" text="Delete" />
+			<Button fx:id="fx_BtnAdd" mnemonicParsing="false" onAction="#addAction" text="Add" />
+			<Button fx:id="fx_BtnDelete" mnemonicParsing="false" onAction="#deleteAction" text="Delete" />
 		    </children>
 		</HBox>
+	    </children>
+	</VBox>
+	<VBox AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+	    <children>
+		<CheckBox mnemonicParsing="false" text="Ninja Costume"/>
+		<CheckBox mnemonicParsing="false" text="Breathing tube"/>
+		<CheckBox mnemonicParsing="false" text="Iron sleeves"/>
+		<CheckBox mnemonicParsing="false" text="Garotte"/>
+		<CheckBox mnemonicParsing="false" text="Flash powder"/>
+		<CheckBox mnemonicParsing="false" text="Flint and tinder"/>
+		<CheckBox mnemonicParsing="false" text="Spiderfish"/>
+		<CheckBox mnemonicParsing="false" text="Blood of Nil"/>
 	    </children>
 	</VBox>
     </children>
