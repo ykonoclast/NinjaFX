@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.ToolBar?>
 
-<BorderPane fx:controller="org.duckdns.spacedock.ninjafx.GameController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:id="gs_borderPane">
+<BorderPane fx:controller="org.duckdns.spacedock.ninjafx.GameController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:id="fx_borderPane">
     <top>
 	<VBox>
 	    <children>
@@ -23,20 +23,19 @@
 		</ToolBar>
 		<ToolBar>
 		    <items>
-			<Button mnemonicParsing="false" text="left"/>
+			<Button mnemonicParsing="false" text="left" onAction="#goLeft"/>
 			<Text text="Caractéristiques"/>
-			<Button mnemonicParsing="false" text="right"/>
+			<Button mnemonicParsing="false" text="right" onAction="#goRight"/>
 		    </items>
 		</ToolBar>
 	    </children>
 	</VBox>
     </top>
     <center>
-	<AnchorPane BorderPane.alignment="CENTER">
+	<AnchorPane BorderPane.alignment="CENTER" fx:id="fx_anchorPane">
 	    <children>
 		<GridPane nodeOrientation="LEFT_TO_RIGHT" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
 		    <children>
-
 			<Button mnemonicParsing="false" text="Punch" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 			<Button mnemonicParsing="false" text="Kick" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 			<Button mnemonicParsing="false" text="Throw" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
@@ -108,7 +107,7 @@
     </center>
 
     <bottom>
-	<HBox BorderPane.alignment="CENTER">
+	<HBox BorderPane.alignment="CENTER" fx:id="fx_consolePane">
 	    <children>
 		<TextArea text="fsfsf" />
 		<Button mnemonicParsing="false" text="Button" />
@@ -116,5 +115,4 @@
 	    </children>
 	</HBox>
     </bottom>
-
 </BorderPane>

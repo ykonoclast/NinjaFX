@@ -6,13 +6,11 @@
 package org.duckdns.spacedock.ninjafx;
 
 import java.io.IOException;
-import java.util.function.Consumer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 /**
  *
@@ -22,8 +20,6 @@ public class NinjaFX extends Application implements IMainAppCallback
 {
 
     private Stage m_mainStage;
-
-    private IFxmlController m_currentController;
 
     @Override
     public void start(Stage stage) throws IOException
@@ -38,9 +34,13 @@ public class NinjaFX extends Application implements IMainAppCallback
     }
 
     @Override
-    public void displayScene(String p_xmlFileName) throws IOException
+    public void displayScene(String p_fxmlFileName) throws IOException
     {
-	Parent root = getParentFromFxml(p_xmlFileName);
+	FXMLLoader loader = new FXMLLoader(getClass().getResource(p_fxmlFileName));//TODO voir si on peut pas éviter ce getclass
+	Parent root = loader.load();
+
+	IFxmlController controller = (IFxmlController) loader.getController();
+	controller.setMainAppCallback(this);
 
 	//scene.getStylesheets().add(Form.class.getResource("Form.css").toExternalForm());//incantation pour le css TODO pourquoi le class.getressource?
 	Scene currentScene = m_mainStage.getScene();
@@ -74,17 +74,5 @@ public class NinjaFX extends Application implements IMainAppCallback
     public static void main(String[] args)
     {
 	launch(args);
-    }
-
-    @Override
-    public Parent getParentFromFxml(String p_fxmlFileName) throws IOException
-    {
-	FXMLLoader loader = new FXMLLoader(getClass().getResource(p_fxmlFileName));//TODO voir si on peut pas éviter ce getclass
-	Parent result = loader.load();
-
-	m_currentController = (IFxmlController) loader.getController();
-	m_currentController.setMainAppCallback(this);
-
-	return result;
     }
 }

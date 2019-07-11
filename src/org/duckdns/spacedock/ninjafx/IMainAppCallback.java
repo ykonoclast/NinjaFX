@@ -16,6 +16,4 @@ public interface IMainAppCallback
 {
 
     public void displayScene(String p_fxmlFileName) throws IOException;
-
-    public Parent getParentFromFxml(String p_fxmlFileName) throws IOException;
 }
