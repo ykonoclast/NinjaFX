@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * véritable classe principale : gère la fenêtre et effectue le démarrage de
+ * l'appli
  *
  * @author ykonoclast
  */
@@ -21,6 +23,14 @@ public class NinjaFX extends Application implements IMainAppCallback
 
     private Stage m_mainStage;
 
+    /**
+     * appelée par le framework dans un nouveau thread : ce qui sera fait dans
+     * le main ne sera donc pas sur le même thread (pour ne pas bloquer le GUI
+     * par des accès par exemple)
+     *
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException
     {
@@ -55,20 +65,10 @@ public class NinjaFX extends Application implements IMainAppCallback
 	}
     }
 
-    /*
-    @Override
-    public void displayMenu() throws IOException
-    {
-	displayScene("MainMenu.fxml");
-    }
-
-    @Override
-    public void displayGameScreen() throws IOException
-    {
-	displayScene("GameScreen.fxml");
-    }
-     */
     /**
+     * ce main est a priori dans un thread différent de ce qui est lancé par le
+     * start (qui est appelé par le launch)
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args)

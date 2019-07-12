@@ -13,16 +13,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
- * pas besoin d'un constructeur : on ne définit pas de membre pouvant lever des
- * exceptions sur initialisation ou autre truc devant se faire dès la création
- * de l'objet
+ * contrôle le menu principal
  *
  * @author ykonoclast
  */
 public class MainMenuController implements Initializable, IFxmlController
 {
 
+    /**
+     * pointeur de retour sur l'application principale
+     */
     private IMainAppCallback m_mainApp;
+
+    /**
+     * constructeur par défaut indispensable pour ne pas provoquer de bugs
+     * d'initialisation avec certaines versions de javafx
+     *
+     * un constructeur peut aussi êttre utile pour gérer les exceptions levées
+     * dans l'initialisation des membres (notamment des final)
+     */
+    public MainMenuController()
+    {
+    }
 
     /**
      * appelé automatiquement par le framework, attention la Scene n'est pas
@@ -38,12 +50,22 @@ public class MainMenuController implements Initializable, IFxmlController
 	//rien pour l'instant
     }
 
+    /**
+     *
+     * @param p_App
+     */
     @Override
     public void setMainAppCallback(IMainAppCallback p_App)
     {
 	m_mainApp = p_App;
     }
 
+    /**
+     * lance l'écran principal de jeu pour une nouvelle partie
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void newGame(ActionEvent event) throws IOException
     {

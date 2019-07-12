@@ -14,23 +14,15 @@
 
 <BorderPane fx:controller="org.duckdns.spacedock.ninjafx.GameController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:id="fx_borderPane">
     <top>
-	<VBox>
-	    <children>
-		<ToolBar>
-		    <items>
-			<Button mnemonicParsing="false" text="Back"/>
-			<Button mnemonicParsing="false" text="Son"/>
-		    </items>
-		</ToolBar>
-		<ToolBar fx:id="fx_navBar">
-		    <items>
-			<Button mnemonicParsing="false" text="left" fx:id="fx_btnGoLeft" onAction="#goLeft"/>
-			<Label text="Caractéristiques"/>
-			<Button mnemonicParsing="false" text="right" fx:id="fx_btnGoRight" onAction="#goRight"/>
-		    </items>
-		</ToolBar>
-	    </children>
-	</VBox>
+	<ToolBar fx:id="fx_navBar">
+	    <items>
+		<Button mnemonicParsing="false" text="Back"/>
+		<Button mnemonicParsing="false" text="left" fx:id="fx_btnGoLeft" onAction="#goLeft"/>
+		<Label text="Caractéristiques" fx:id="fx_navLabel"/>
+		<Button mnemonicParsing="false" text="right" fx:id="fx_btnGoRight" onAction="#goRight"/>
+		<Button mnemonicParsing="false" text="Son"/>
+	    </items>
+	</ToolBar>
     </top>
     <center>
 	<AnchorPane BorderPane.alignment="CENTER" fx:id="fx_anchorPane">

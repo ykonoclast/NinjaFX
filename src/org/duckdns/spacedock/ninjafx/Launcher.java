@@ -13,6 +13,9 @@ public class Launcher
 {
 
     /**
+     * classe principale n'étendant pas Application pour éviter problème au
+     * chargement sur certaines versions du jdk
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args)

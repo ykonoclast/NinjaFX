@@ -5,7 +5,6 @@
  */
 package org.duckdns.spacedock.ninjafx;
 
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
+ * contrôleur du pan équipement de l'écran principal
  *
  * @author ykonoclast
  */
@@ -49,18 +49,34 @@ public class StuffController
     @FXML
     private TextField fx_txtAddItem;
 
-    final ObservableList<String> listItems = FXCollections.observableArrayList();//TODO foutre ça dans l'objet Ninja plutôt et binder
+    final ObservableList<String> listItems = FXCollections.observableArrayList();//TODO binder avec l'objet Ninja
 
-    // Add event handlers
+    /**
+     * constructeur par défaut indispensable pour ne pas provoquer de bugs
+     * d'initialisation avec certaines versions de javafx
+     */
+    public StuffController()
+    {
+    }
+
+    /**
+     * ajoute un élément à la liste d'équipement
+     *
+     * @param action
+     */
     @FXML
     private void addAction(ActionEvent action)
     {
 	listItems.add(fx_txtAddItem.getText());
 	fx_txtAddItem.clear();
 	fx_BtnAdd.setDisable(true);
-
     }
 
+    /**
+     * retire un élément à la liste d'équipement
+     *
+     * @param action
+     */
     @FXML
     private void deleteAction(ActionEvent action)
     {
@@ -69,6 +85,9 @@ public class StuffController
 	fx_BtnDelete.setDisable(true);
     }
 
+    /**
+     * appelé par le framework
+     */
     public void initialize()
     {
 	fx_listBoxMain.setItems(listItems);
@@ -94,6 +113,5 @@ public class StuffController
 		fx_BtnDelete.setDisable(false);
 	    }
 	});
-
     }
 }

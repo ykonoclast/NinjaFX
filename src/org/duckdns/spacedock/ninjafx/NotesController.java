@@ -18,12 +18,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
+ * contrôleur du pan notes de l'écran principal
  *
  * @author ykonoclast
  */
 public class NotesController
 {//TODO nettoyer, virer trucs non-utilisés, renommer etc.
 
+    //affectations des éléments fxml
     @FXML
     private Button fx_BtnAdd;
 
@@ -50,14 +52,20 @@ public class NotesController
 
     final ObservableList<String> listItems = FXCollections.observableArrayList();//TODO foutre ça dans l'objet Ninja plutôt et binder
 
-    // Add event handlers
+    /**
+     * constructeur par défaut indispensable pour ne pas provoquer de bugs
+     * d'initialisation avec certaines versions de javafx
+     */
+    public NotesController()
+    {
+    }
+
     @FXML
     private void addAction(ActionEvent action)
     {
 	listItems.add(fx_txtAddItem.getText());
 	fx_txtAddItem.clear();
 	fx_BtnAdd.setDisable(true);
-
     }
 
     @FXML
@@ -68,6 +76,9 @@ public class NotesController
 	fx_BtnDelete.setDisable(true);
     }
 
+    /**
+     * appelé par le framework
+     */
     public void initialize()
     {
 	fx_listBoxMain.setItems(listItems);
@@ -76,6 +87,7 @@ public class NotesController
 	fx_BtnAdd.setDisable(true);
 	fx_BtnDelete.setDisable(true);
 
+	//TODO dans certains cas le focus est mal géré : les boutons restent actifs ou se désactivent au mauvais moment : investiguer
 	//si on focus le champ texte : le bouton ajout est activé
 	fx_txtAddItem.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) ->
 	{
@@ -93,6 +105,5 @@ public class NotesController
 		fx_BtnDelete.setDisable(false);
 	    }
 	});
-
     }
 }
