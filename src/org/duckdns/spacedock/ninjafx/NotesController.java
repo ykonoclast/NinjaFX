@@ -12,10 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 /**
  * contrôleur du pan notes de l'écran principal
@@ -50,7 +52,7 @@ public class NotesController
     @FXML
     private TextField fx_txtAddItem;
 
-    final ObservableList<String> listItems = FXCollections.observableArrayList();//TODO foutre ça dans l'objet Ninja plutôt et binder
+    final ObservableList<String> m_listItems = FXCollections.observableArrayList();//TODO foutre ça dans l'objet Ninja plutôt et binder
 
     /**
      * constructeur par défaut indispensable pour ne pas provoquer de bugs
@@ -63,7 +65,7 @@ public class NotesController
     @FXML
     private void addAction(ActionEvent action)
     {
-	listItems.add(fx_txtAddItem.getText());
+	m_listItems.add(fx_txtAddItem.getText());
 	fx_txtAddItem.clear();
 	fx_BtnAdd.setDisable(true);
     }
@@ -72,7 +74,7 @@ public class NotesController
     private void deleteAction(ActionEvent action)
     {
 	int selectedItem = fx_listBoxMain.getSelectionModel().getSelectedIndex();
-	listItems.remove(selectedItem);
+	m_listItems.remove(selectedItem);
 	fx_BtnDelete.setDisable(true);
     }
 
@@ -81,7 +83,7 @@ public class NotesController
      */
     public void initialize()
     {
-	fx_listBoxMain.setItems(listItems);
+	fx_listBoxMain.setItems(m_listItems);
 
 	//par défaut on désactive les boutons : ils seront activés que si le champ texte ou une ligne est focusé
 	fx_BtnAdd.setDisable(true);
@@ -105,5 +107,49 @@ public class NotesController
 		fx_BtnDelete.setDisable(false);
 	    }
 	});
+
+	fx_listBoxMain.setCellFactory(new Callback<ListView<String>, ListCell<String>>()
+	{
+	    @Override
+	    public ListCell<String> call(ListView<String> param)
+	    {
+		return new DeletableCell();
+	    }
+	});
+    }
+
+    //TODO : voir pour passer ça en privé
+    static class DeletableCell extends ListCell<String>
+    {
+
+	HBox hbox = new HBox();
+	Label label = new Label("");
+	//Pane pane = new Pane();
+	Button button = new Button("Del");
+
+	public DeletableCell()
+	{
+	    super();
+
+	    hbox.getChildren().addAll(label/*, pane*/, button);
+	    button.setOnAction(event -> getListView().getItems().remove(getItem()));
+	}
+
+	@Override
+	protected void updateItem(String item, boolean empty)
+	{
+	    super.updateItem(item, empty);
+
+	    if (item != null && !empty)
+	    {
+		label.setText(item);
+		setGraphic(hbox);
+	    }
+	    else
+	    {
+		setText(null);
+		setGraphic(null);
+	    }
+	}
     }
 }
