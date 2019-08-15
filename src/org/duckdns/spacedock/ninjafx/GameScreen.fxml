@@ -11,6 +11,9 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+<?import javafx.scene.control.SpinnerValueFactory?>
 
 <BorderPane fx:controller="org.duckdns.spacedock.ninjafx.GameController" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:id="fx_borderPane">
     <top>
@@ -40,22 +43,35 @@
 			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-			<Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+			<Spinner fx:id="spinnerEndurance" GridPane.columnIndex="1" GridPane.rowIndex="4" >
+			    <valueFactory>
+				<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="20"/>
+			    </valueFactory>
+			</Spinner>
+
+			<Spinner fx:id="spinnerInnerForce" GridPane.columnIndex="1" GridPane.rowIndex="5" >
+			    <valueFactory>
+				<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="20"/>
+			    </valueFactory>
+			</Spinner>
+
+
+
+
+
 
 			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
 			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
 			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
 			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-			<Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+
 
 			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
 			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
 			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
 			<Button mnemonicParsing="false" text="oeil" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-			<Button mnemonicParsing="false" text="-" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
-			<Button mnemonicParsing="false" text="-" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+
 
 			<CheckBox mnemonicParsing="false" text="use inner force" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
 			<CheckBox mnemonicParsing="false" text="use inner force" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
@@ -66,11 +82,29 @@
 
 			<Label text="Enemy endurance" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
 
-			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
-			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
-			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+			<Spinner fx:id="spinnerEPunchDefense" GridPane.columnIndex="6" GridPane.rowIndex="0" >
+			    <valueFactory>
+				<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="20"/>
+			    </valueFactory>
+			</Spinner>
 
-			<TextField text="0" GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+			<Spinner fx:id="spinnerEKickDefense" GridPane.columnIndex="6" GridPane.rowIndex="1" >
+			    <valueFactory>
+				<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="20"/>
+			    </valueFactory>
+			</Spinner>
+
+			<Spinner fx:id="spinnerEThrowDefense" GridPane.columnIndex="6" GridPane.rowIndex="2" >
+			    <valueFactory>
+				<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="20"/>
+			    </valueFactory>
+			</Spinner>
+
+			<Spinner fx:id="spinnerEEndurance" GridPane.columnIndex="6" GridPane.rowIndex="4" >
+			    <valueFactory>
+				<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="20"/>
+			    </valueFactory>
+			</Spinner>
 		    </children>
 		</GridPane>
 
@@ -80,9 +114,12 @@
 			<HBox>
 			    <children>
 				<Label text="Shurikens left"/>
-				<Label text="0"/>
-				<Button mnemonicParsing="false" text="+"/>
-				<Button mnemonicParsing="false" text="-"/>
+				<Spinner fx:id="spinner" BorderPane.alignment="CENTER" >
+				    <valueFactory>
+					<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="20"/>
+				    </valueFactory>
+				</Spinner>
+
 			    </children>
 			</HBox>
 			<CheckBox mnemonicParsing="false" text="Arrow cutting"/>
@@ -103,8 +140,8 @@
 	<HBox BorderPane.alignment="CENTER" fx:id="fx_consolePane">
 	    <children>
 		<TextArea text="fsfsf" />
-		<Button mnemonicParsing="false" text="Button" />
-		<Button mnemonicParsing="false" text="Button" />
+		<Button mnemonicParsing="false" text="1D6" />
+		<Button mnemonicParsing="false" text="2D6" />
 	    </children>
 	</HBox>
     </bottom>
