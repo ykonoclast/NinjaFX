@@ -5,6 +5,8 @@
  */
 package org.duckdns.spacedock.ninjafx;
 
+import javafx.beans.property.ReadOnlyDoubleProperty;
+
 /**
  *
  * @author ykonoclast
@@ -12,7 +14,7 @@ package org.duckdns.spacedock.ninjafx;
 public interface ICellController//TODO fusionner avec autres interfaces? Séparer les méthodes et en placer une sous une interface generique comme Consumer?
 {
 
-    public void setCallback(Runnable p_runnable);
+    public void setInitialElements(Runnable p_callback);
 
-    public void updateItem(String p_newText);
+    public void updateItem(String p_newText, ReadOnlyDoubleProperty p_listViewWidth);
 }

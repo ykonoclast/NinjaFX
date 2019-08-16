@@ -118,8 +118,9 @@ public class GameController implements IFxmlController
 	{
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("StuffPane.fxml"));//TODO voir si on peut pas éviter ce getclass
 	    leftPane = loader.load();//TODO voir pour mutualiser ces lignes avec l'appli principale
-	    loader = new FXMLLoader(getClass().getResource("NotesPane.fxml"));//TODO voir si on peut pas éviter ce getclass
+	    loader = new FXMLLoader(getClass().getResource("NotesBoard.fxml"));//TODO voir si on peut pas éviter ce getclass
 	    rightPane = loader.load();//TODO voir pour mutualiser ces lignes avec l'appli principale
+	    ((INotesController) loader.getController()).setTitle("I must remember...");//la liste de notes est une vue réutilisable custom qui se configure en précisant son titre
 	}
 	catch (IOException e)
 	{
