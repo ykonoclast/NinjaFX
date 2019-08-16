@@ -5,11 +5,15 @@
  */
 package org.duckdns.spacedock.ninjafx;
 
+import java.io.IOException;
+import java.util.function.Consumer;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -113,26 +117,39 @@ public class NotesController
 	    @Override
 	    public ListCell<String> call(ListView<String> param)
 	    {
-		return new DeletableCell();
+		DeletableCell result = null;
+		try
+		{
+		    result = new DeletableCell();
+		}
+		catch (IOException e)
+		{
+		    System.out.println("taratata");
+//TODO traiter l'exception (pop-up? log?)
+		}
+		return result;
 	    }
 	});
     }
 
     //TODO : voir pour passer ça en privé
-    static class DeletableCell extends ListCell<String>
+    private static class DeletableCell extends ListCell<String> implements Runnable
     {
 
-	HBox hbox = new HBox();
-	Label label = new Label("");
-	//Pane pane = new Pane();
-	Button button = new Button("Del");
+	private final ICellController m_controller;
+	private final Node m_root;
 
-	public DeletableCell()
+	public DeletableCell() throws IOException
 	{
 	    super();
 
-	    hbox.getChildren().addAll(label/*, pane*/, button);
-	    button.setOnAction(event -> getListView().getItems().remove(getItem()));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("DeletableCell.fxml"));
+
+	    m_root = loader.load();
+	    m_controller = (ICellController) loader.getController();
+	    m_controller.setCallback(this);
+	    setGraphic(m_root);
+
 	}
 
 	@Override
@@ -142,14 +159,20 @@ public class NotesController
 
 	    if (item != null && !empty)
 	    {
-		label.setText(item);
-		setGraphic(hbox);
+		m_controller.updateItem(item);
+		setGraphic(m_root);//TODO : voir si on peut virer ce truc
 	    }
 	    else
 	    {
 		setText(null);
 		setGraphic(null);
 	    }
+	}
+
+	@Override
+	public void run()
+	{
+	    getListView().getItems().remove(getItem());
 	}
     }
 }

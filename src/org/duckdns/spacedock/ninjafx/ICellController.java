@@ -5,15 +5,14 @@
  */
 package org.duckdns.spacedock.ninjafx;
 
-import java.io.IOException;
-import javafx.scene.Parent;
-
 /**
  *
  * @author ykonoclast
  */
-public interface IMainAppCallback
+public interface ICellController//TODO fusionner avec autres interfaces? Séparer les méthodes et en placer une sous une interface generique comme Consumer?
 {
 
-    public void displayScene(String p_fxmlFileName) throws IOException;
+    public void setCallback(Runnable p_runnable);
+
+    public void updateItem(String p_newText);
 }

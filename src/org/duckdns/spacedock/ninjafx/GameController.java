@@ -36,7 +36,7 @@ public class GameController implements IFxmlController
     /**
      * application principale, principalement pour retourner au menu principal
      */
-    private IMainAppCallback m_mainApp;
+    private IHigherLevelCallback m_mainApp;
 
     /**
      * pan dans lequel on se situe actuellement
@@ -140,7 +140,7 @@ public class GameController implements IFxmlController
      * @param p_App
      */
     @Override
-    public void setMainAppCallback(IMainAppCallback p_App)
+    public void setHigherLevelCallback(IHigherLevelCallback p_App)
     {
 	m_mainApp = p_App;
     }

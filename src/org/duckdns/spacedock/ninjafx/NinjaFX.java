@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  *
  * @author ykonoclast
  */
-public class NinjaFX extends Application implements IMainAppCallback
+public class NinjaFX extends Application implements IHigherLevelCallback
 {//NOTE : on n'utilise pas de subscene car l'on n'a pas besoin de séparer les éléments propres à la scène comme la caméra ou les antialiasing
 
     private Stage m_mainStage;
@@ -50,7 +50,7 @@ public class NinjaFX extends Application implements IMainAppCallback
 	Parent root = loader.load();
 
 	IFxmlController controller = (IFxmlController) loader.getController();
-	controller.setMainAppCallback(this);
+	controller.setHigherLevelCallback(this);
 
 	//scene.getStylesheets().add(Form.class.getResource("Form.css").toExternalForm());//incantation pour le css TODO pourquoi le class.getressource?
 	Scene currentScene = m_mainStage.getScene();

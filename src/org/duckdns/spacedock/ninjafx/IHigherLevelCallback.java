@@ -5,12 +5,16 @@
  */
 package org.duckdns.spacedock.ninjafx;
 
+import java.io.IOException;
+import javafx.scene.Parent;
+
 /**
  *
  * @author ykonoclast
  */
-public interface IFxmlController
+public interface IHigherLevelCallback
 {
+//todo généraliser et remplacer le displayScene par un accept peut être
 
-    public void setHigherLevelCallback(IHigherLevelCallback p_MainAppCallBack);
+    public void displayScene(String p_fxmlFileName) throws IOException;
 }

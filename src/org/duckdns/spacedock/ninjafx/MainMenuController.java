@@ -23,7 +23,7 @@ public class MainMenuController implements Initializable, IFxmlController
     /**
      * pointeur de retour sur l'application principale
      */
-    private IMainAppCallback m_mainApp;
+    private IHigherLevelCallback m_mainApp;
 
     /**
      * constructeur par défaut indispensable pour ne pas provoquer de bugs
@@ -55,7 +55,7 @@ public class MainMenuController implements Initializable, IFxmlController
      * @param p_App
      */
     @Override
-    public void setMainAppCallback(IMainAppCallback p_App)
+    public void setHigherLevelCallback(IHigherLevelCallback p_App)
     {
 	m_mainApp = p_App;
     }
